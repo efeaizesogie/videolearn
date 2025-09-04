@@ -13,11 +13,11 @@ const Nav = () => {
         <nav className="bg-white border-b border-gray-200 px-6 py-4">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                   <img src="/public/ustackschool-logo.svg" alt="logo" className="w-28 h-20 md:w-40 " />
+                   <img src="/ustackschool-logo.svg" alt="logo" className="w-28 h-20 md:w-40 " />
                 </div>
 
                 <div className="flex items-center gap-4">
-                        <img src="/public/bell-icon.svg" alt="logo" />
+                        <img src="/bell-icon.svg" alt="logo" />
 
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
