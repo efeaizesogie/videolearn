@@ -45,6 +45,16 @@ VideoLearn is a React application that allows users to manage and watch YouTube 
 - `src/components/`: UI components including navigation and video cards
 - `src/constants.ts`: Type definitions and constants
 
+## Deployment Notes
+
+### YouTube Video Playback
+
+When deploying to platforms like Vercel, ensure that YouTube videos are properly embedded:
+
+- The application extracts YouTube video IDs from full URLs (both youtube.com and youtu.be formats)
+- Only the extracted IDs should be used in the iframe src attribute (`https://www.youtube.com/embed/{videoId}`)
+- Using full YouTube URLs in the embed src will cause playback errors in production environments
+
 ## License
 
 This project is open source and available under the MIT license.

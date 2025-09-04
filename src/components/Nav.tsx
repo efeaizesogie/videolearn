@@ -23,7 +23,7 @@ const Nav = () => {
                         <DropdownMenuTrigger asChild>
 
                                 <Avatar className="h-8 w-8">
-                                    <AvatarImage src="/public/profile-pic.png" alt="Profile" />
+                                    <AvatarImage src="/profile-pic.png" alt="Profile" />
                                     <AvatarFallback>L</AvatarFallback>
                                 </Avatar>
 

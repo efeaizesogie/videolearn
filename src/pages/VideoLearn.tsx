@@ -9,19 +9,26 @@ import type {Video} from "@/constants.ts";
 
 
 const VideoLearn = () => {
+    // Extract YouTube IDs from URLs for initial videos
+    const extractYouTubeId = (url: string): string | null => {
+        const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
+        const match = url.match(regex)
+        return match ? match[1] : null
+    }
+
     const [videos, setVideos] = useState<Video[]>([
         {
             id: "1",
             name: "Prototype like a Pro: Figma prototying tutorial with Full app example (Free Figma file included)",
             description: "Learn the basics of React components and JSX",
-            youtubeId: "https://youtu.be/mqWAbK15kAc?si=QBQ5NkWF-x6oiE7W",
+            youtubeId: extractYouTubeId("https://youtu.be/mqWAbK15kAc?si=QBQ5NkWF-x6oiE7W") || "mqWAbK15kAc",
         },
         {
             id: "2",
             name: "DON'T PLAY THIS VICTORIA ORENZE AND GUC WORSHIP UNLESS YOU ARE READY FOR A BREAKTHROUGH!!!",
             description: "ministerguc #victoriaorenze #propheticworship\n" +
                 "Welcome to Pistis Hub \n",
-            youtubeId: "https://www.youtube.com/watch?v=RQMDAk9njPc",
+            youtubeId: extractYouTubeId("https://www.youtube.com/watch?v=RQMDAk9njPc") || "RQMDAk9njPc",
         },
     ])
 
@@ -32,12 +39,6 @@ const VideoLearn = () => {
         youtubeUrl: "",
     })
     const [isVideoLoading, setIsVideoLoading] = useState(true)
-
-    const extractYouTubeId = (url: string): string | null => {
-        const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
-        const match = url.match(regex)
-        return match ? match[1] : null
-    }
 
     const handleAddVideo = (e: React.FormEvent) => {
         e.preventDefault()
@@ -116,7 +117,7 @@ const VideoLearn = () => {
                                             </div>
                                         )}
                                         <iframe
-                                            src={`https://www.youtube.com/embed/${currentVideo.youtubeId}`}
+                                            src={`https://www.youtube.com/embed/${extractYouTubeId(currentVideo.youtubeId) || currentVideo.youtubeId}`}
                                             title={currentVideo.name}
                                             className="w-full h-full rounded-lg"
                                             aria-placeholder={currentVideo.description}
@@ -197,8 +198,3 @@ const VideoLearn = () => {
     )
 }
 export default VideoLearn
-
-
-
-
-
